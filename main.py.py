@@ -17,6 +17,14 @@ class Student(Person):
     def register(self):
         print("I have registered my courses.")
 
+        def under_graduate_student(self):
+
+            def attend_lectures(self):
+                print("attending lectures")
+
+            def take_notes(self):
+                print("Taking Notes")
+
 class Lecturer(Person):
 
     def teach(self):
