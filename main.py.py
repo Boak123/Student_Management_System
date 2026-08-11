@@ -33,17 +33,17 @@ class Student(Person):
         print("I have registered my courses.")
 
 
-class under_graduate_student(Student):
-    def __init__(self,name, address, phone, matricNumber, relationship):
-        super().__init__(name, address, phone)
+class UnderGraduateGstudent(Student):
+    def __init__(self, name, address, phone, student_id, course, level, matricNumber, relationship,):
+        super().__init__(name, address, phone, student_id, course, level)
 
         self.matricNumber = matricNumber
         self.relationship = relationship
 
-        def attend_lectures(self):
+    def attend_lectures(self):
             print("attending lectures")
 
-        def take_notes(self):
+    def take_notes(self):
             print("Taking Notes")
 
 
@@ -78,9 +78,12 @@ class Administrator(Person):
 
 
 student1 = Student("victor", "kwara", 1001, "STOO1", "computer science", "Monday 9AM")
-lecturer1 = Lecturer("Bolu", "kwara" "ST001", "tyfu`2", "ICT", 500000)
-dministrator1 = Administrator("Akorede", "Kwara", 8909, "ihe8989", "IT", "operator")
+lecturer1 = Lecturer("Bolu", "kwara", 81111, "tyfu`2", "ICT", 500000)
+administrator1 = Administrator("Akorede", "Kwara", 8909, "ihe8989", "IT", "operator")
+under_graduate1 = UnderGraduateGstudent("Bolu", "Kwara", 889, "Math", 300, 205, "Tola", "single") 
 student1.study()
+under_graduate1.study()
+under_graduate1.sleep()
 student1.take_exam()
 student1.register()
 student1.sleep()
