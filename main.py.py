@@ -1,9 +1,9 @@
 class Person:
 
-    def __init__(self, name, address, ID):
+    def __init__(self, name, address, phone):
         self.name = name
         self.address = address
-        self.ID = ID
+        self.phone = phone
 
     def eat(self):
         print("I want to eat.")
@@ -11,15 +11,17 @@ class Person:
     def sleep(self):
         print("I want to sleep.")
 
-    def bath(bath):
+    def bath(self):
         print("taking my bath")
 
 class Student(Person):
 
-    def __init__(self, studentID, course, timetable):
-        self.studentID = studentID
+    def __init__(self, name, address, phone, student_id, course, level):
+        super().__init__(name, address, phone)
+
+        self.student_id = student_id
         self.course = course
-        self.timetable = timetable
+        self.level = level
 
     def study(self):
         print("I am Studying")
@@ -30,8 +32,11 @@ class Student(Person):
     def register(self):
         print("I have registered my courses.")
 
+
 class under_graduate_student(Student):
-    def __init__(self, matricNumber, relationship):
+    def __init__(self,name, address, phone, matricNumber, relationship):
+        super().__init__(name, address, phone)
+
         self.matricNumber = matricNumber
         self.relationship = relationship
 
@@ -41,19 +46,26 @@ class under_graduate_student(Student):
         def take_notes(self):
             print("Taking Notes")
 
+
 class Lecturer(Person):
 
-    def __init__(self, staffID, course_teaching):
-        self.staffID = staffID
-        self.course_teaching = course_teaching
+    def __init__(self, name, address, phone, staff_id, department, salary):
+        super().__init__(name, address, phone)
+
+        self.staffID = staff_id
+        self.department = department
+        self.salary = salary
 
     def teach(self):
         print("I am teaching.")
 
 class Administrator(Person):
-    def __init__(self, emergencydata, id):
-        self.emergencydata = emergencydata
-        self.id = id
+    def __init__(self, name, address, phone, admin_id, department, role):
+        super().__init__(name, address, phone)
+
+        self.admin_id = admin_id
+        self.department = department
+        self.role = role
 
     def admit_student(self):
         print("Student admitted.")
@@ -64,7 +76,10 @@ class Administrator(Person):
     def process_school_fees(self):
         print("processing")
 
-student1 = Student()
+
+student1 = Student("victor", "kwara", 1001, "STOO1", "computer science", "Monday 9AM")
+lecturer1 = Lecturer("Bolu", "kwara" "ST001", "tyfu`2", "ICT", 500000)
+dministrator1 = Administrator("Akorede", "Kwara", 8909, "ihe8989", "IT", "operator")
 student1.study()
 student1.take_exam()
 student1.register()
