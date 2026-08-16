@@ -14,6 +14,9 @@ class Person:
     def bath(self):
         print("taking my bath")
 
+    def display_information(self):
+            print(f"Name: {self.name}, Address: {self.address}, Phone: {self.phone}")
+                  
 class Student(Person):
 
     def __init__(self, name, address, phone, student_id, course, level):
@@ -32,8 +35,12 @@ class Student(Person):
     def register(self):
         print("I have registered my courses.")
 
+    def display_information(self):
+        print(f"Name: {self.name}, Address: {self}, Phone: {self.phone}, Student id: {self.student_id}")
+
 
 class UnderGraduateGstudent(Student):
+    
     def __init__(self, name, address, phone, student_id, course, level, matricNumber, relationship,):
         super().__init__(name, address, phone, student_id, course, level)
 
@@ -45,6 +52,9 @@ class UnderGraduateGstudent(Student):
 
     def take_notes(self):
             print("Taking Notes")
+
+    def display_information(self):
+        print(f"Name: {self.name}, Address: {self}, Phone: {self.phone}, Student id: {self.student_id}")
 
 
 class Lecturer(Person):
@@ -58,6 +68,9 @@ class Lecturer(Person):
 
     def teach(self):
         print("I am teaching.")
+
+    def display_information(self):
+        print(f"Name: {self.name}, Address: {self}, Phone: {self.phone}, staff id: {self.staff_id}")
 
 class Administrator(Person):
     def __init__(self, name, address, phone, admin_id, department, role):
@@ -76,6 +89,9 @@ class Administrator(Person):
     def process_school_fees(self):
         print("processing")
 
+    def display_information(self):
+        print(f"Name: {self.name}, Address: {self}, Phone: {self.phone}, Admin id: {self.admin_id}")
+
 
 student1 = Student("victor", "kwara", 1001, "STOO1", "computer science", "Monday 9AM")
 lecturer1 = Lecturer("Bolu", "kwara", 81111, "tyfu`2", "ICT", 500000)
@@ -88,3 +104,4 @@ student1.take_exam()
 student1.register()
 student1.sleep()
 student1.eat()
+student1.display_information()
