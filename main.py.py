@@ -36,7 +36,8 @@ class Student(Person):
         print("I have registered my courses.")
 
     def display_information(self):
-        print(f"Name: {self.name}, Address: {self}, Phone: {self.phone}, Student id: {self.student_id}")
+        super().display_information()
+        print(f"Student id: {self.student_id}")
 
 
 class UnderGraduateGstudent(Student):
@@ -54,15 +55,16 @@ class UnderGraduateGstudent(Student):
             print("Taking Notes")
 
     def display_information(self):
-        print(f"Name: {self.name}, Address: {self}, Phone: {self.phone}, Student id: {self.student_id}")
-
+        super().display_information()
+        print(f"Matric Number: {self.matricNumber}")
+        print(f"Relationship: {self.relationship}")
 
 class Lecturer(Person):
 
     def __init__(self, name, address, phone, staff_id, department, salary):
         super().__init__(name, address, phone)
 
-        self.staffID = staff_id
+        self.staff_id = staff_id
         self.department = department
         self.salary = salary
 
@@ -70,7 +72,7 @@ class Lecturer(Person):
         print("I am teaching.")
 
     def display_information(self):
-        print(f"Name: {self.name}, Address: {self}, Phone: {self.phone}, staff id: {self.staff_id}")
+        print(f"Name: {self.name}, Address: {self.address}, Phone: {self.phone}, staff id: {self.staff_id}")
 
 class Administrator(Person):
     def __init__(self, name, address, phone, admin_id, department, role):
@@ -90,7 +92,7 @@ class Administrator(Person):
         print("processing")
 
     def display_information(self):
-        print(f"Name: {self.name}, Address: {self}, Phone: {self.phone}, Admin id: {self.admin_id}")
+        print(f"Name: {self.name}, Address: {self.address}, Phone: {self.phone}, Admin id: {self.admin_id}")
 
 
 student1 = Student("victor", "kwara", 1001, "STOO1", "computer science", "Monday 9AM")
@@ -105,3 +107,14 @@ student1.register()
 student1.sleep()
 student1.eat()
 student1.display_information()
+
+people = [
+    student1,
+    lecturer1,
+    administrator1,
+    under_graduate1
+]
+
+for person in people:
+    person.display_information()
+    print("----------------")
