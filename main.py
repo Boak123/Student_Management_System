@@ -1,9 +1,11 @@
-class Person:
+from abc import ABC, abstractmethod
+class Person(ABC):
 
     def __init__(self, name, address, phone):
         self.name = name
         self.address = address
         self.__phone = phone
+
 
     def eat(self):
         print("I want to eat.")
@@ -18,13 +20,17 @@ class Person:
         return self.__phone
 
     def set_phone(self, phone):
-        if not phone.strip():
+        if not phone:
             print("Phone number must not be empty.")
         else:
             self.__phone = phone
 
-    # def display_information(self):
-    #         print(f"Name: {self.name}, Address: {self.address}, Phone: {self.phone}")
+    @abstractmethod
+    def perform_role(self):
+        pass
+
+    def display_information(self):
+        print(f"Name: {self.name}, Address: {self.address}, Phone: {self.__phone}")
                   
 class Student(Person):
 
@@ -34,7 +40,11 @@ class Student(Person):
         self.student_id = student_id
         self.course = course
         self.level = level
-        self.__score = score
+        self.__score = 0
+        if 0 <= score <= 100:
+            self.set_score(score)
+        else:
+            print("invalid Score")
 
     def study(self):
         print("I am Studying")
@@ -44,10 +54,6 @@ class Student(Person):
 
     def register(self):
         print("I have registered my courses.")
-
-    def display_information(self):
-        super().display_information()
-        print(f"Student id: {self.student_id}")
 
     def set_score(self, score):
         if 0 <= score <= 100:
@@ -79,8 +85,11 @@ class Student(Person):
             f"Score: {self.get_score()}, Grade: {self.calculate_grade()}"
         )
 
+    def perform_role(self):
+        print("Attend Class")
 
-class UnderGraduateGstudent(Student):
+
+class UnderGraduatestudent(Student):
     
     def __init__(self, name, address, phone, student_id, course, level, matricNumber, relationship, score):
         super().__init__(name, address, phone, student_id, course, level, score)
@@ -101,6 +110,9 @@ class UnderGraduateGstudent(Student):
 
     def get_matric_number(self):
         return self.__matricNumber
+
+    def perform_role(self):
+        print("Registering")
 
 class Lecturer(Person):
 
@@ -132,6 +144,9 @@ class Lecturer(Person):
     def display_information(self):
         print(f"Name: {self.name}, Address: {self.address}, Phone: {self.get_phone()}, staff id: {self.staff_id}")
 
+    def perform_role(self):
+        print("Teaching Student")
+
 class Administrator(Person):
     def __init__(self, name, address, phone, admin_id, department, role):
         super().__init__(name, address, phone)
@@ -161,11 +176,14 @@ class Administrator(Person):
     def display_information(self):
         print(f"Name: {self.name}, Address: {self.address}, Phone: {self.get_phone()}, Admin id: {self.admin_id}")
 
+    def perform_role(self):
+        print("Handling Files")
+
 
 student1 = Student("victor", "kwara", 1001, "STOO1", "computer science", "Monday 9AM", 50)
 lecturer1 = Lecturer("Bolu", "kwara", 81111, "tyfu`2", "ICT", 500000)
 administrator1 = Administrator("Akorede", "Kwara", 8909, "ihe8989", "IT", "operator")
-under_graduate1 = UnderGraduateGstudent("Bolu", "Kwara", 889, "Math", 300, 205, "Tola", "single", 20) 
+under_graduate1 = UnderGraduatestudent("Bolu", "Kwara", 7043797036, "456gh", "Computer science", 200, 3345, "single", 20) 
 student1.study()
 under_graduate1.study()
 under_graduate1.sleep()
@@ -190,3 +208,8 @@ people = [
 for person in people:
     person.display_information()
     print("----------------")
+
+
+for person in people:
+    person.perform_role()
+    print("=== ROLES ===")
