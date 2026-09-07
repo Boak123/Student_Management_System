@@ -1,15 +1,16 @@
 
-from models.person import Person
-from models.student import Student
-from models.undergraduate import UnderGraduatestudent
-from models.lecturer import Lecturer
-from models.administrator import Administrator
+from models import (
+    Student,
+    UnderGraduateStudent,
+    Lecturer,
+    Administrator
+)
 
 
 student1 = Student("victor", "kwara", 1001, "STOO1", "computer science", "Monday 9AM", 50)
 lecturer1 = Lecturer("Bolu", "kwara", 81111, "tyfu`2", "ICT", 500000)
 administrator1 = Administrator("Akorede", "Kwara", 8909, "ihe8989", "IT", "operator")
-under_graduate1 = UnderGraduatestudent("Bolu", "Kwara", 7043797036, "456gh", "Computer science", 200, 3345, "single", 20) 
+under_graduate1 = UnderGraduateStudent("Bolu", "Kwara", 7043797036, "456gh", "Computer science", 200, 3345, "single", 20) 
 student1.study()
 under_graduate1.study()
 under_graduate1.sleep()
@@ -34,8 +35,8 @@ people = [
 for person in people:
     person.display_information()
     print("----------------")
-
+print("=== ROLES ===")
 
 for person in people:
     person.perform_role()
-    print("=== ROLES ===")
+    
