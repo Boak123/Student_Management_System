@@ -1,4 +1,5 @@
 
+from services.student_service import StudentService
 from models import (
     Student,
     UnderGraduateStudent,
@@ -6,11 +7,13 @@ from models import (
     Administrator
 )
 
-
+student_service = StudentService()
 student1 = Student("victor", "kwara", 1001, "STOO1", "computer science", "Monday 9AM", 50)
 lecturer1 = Lecturer("Bolu", "kwara", 81111, "tyfu`2", "ICT", 500000)
 administrator1 = Administrator("Akorede", "Kwara", 8909, "ihe8989", "IT", "operator")
 under_graduate1 = UnderGraduateStudent("Bolu", "Kwara", 7043797036, "456gh", "Computer science", 200, 3345, "single", 20) 
+student_service.register_student(student1)
+student_service.display_student(student1)
 student1.study()
 under_graduate1.study()
 under_graduate1.sleep()
