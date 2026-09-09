@@ -33,6 +33,15 @@ class StudentService:
                 return
         print("Student not found.")
 
+    def find_students_by_course(self, course):
+        found = False
+        for student in self.students:
+            if student.course == course:
+                student.display_information()
+                found = True
+        if not found:
+            print("Student not found.")
+
     def get_student_count(self):
         count = 0
         for student in self.students:
