@@ -31,4 +31,4 @@ class Person(ABC):
 
     def display_information(self):
         print(f"Name: {self.name}, Address: {self.address}, Phone: {self.__phone}")
-         
+
