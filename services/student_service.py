@@ -12,9 +12,6 @@ class StudentService:
         self.students.append(student)
         print(f"{student.name} has been registered.")
 
-    def add_student(self, student):
-        self.students.append(student)
-
     def remove_student(self, student_id):
         for student in self.students:
             if student.student_id == student_id:
