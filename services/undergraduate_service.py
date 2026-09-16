@@ -13,14 +13,11 @@ class UndergraduateService:
         print(f"{student.name} has been registered as an undergraduate student.")
 
     def find_undergraduate(self, student_id):
-        found = False
         for student in self.students:
             if student.student_id == student_id:
-                student.display_information()
-                found = True
+                return student
 
-        if not found:
-            print("Student not found.")
+        return None
 
 
     def remove_undergraduate(self, student_id):
@@ -32,12 +29,33 @@ class UndergraduateService:
         print("Student not found.")
 
     def find_students_by_course(self, course):
-        self.students_by_course = []
+        students_by_course = []
 
-        for student_course in self.students:
-            if student_course.course == course:
-                self.students_by_course.append(student_course)
-        
-        if not self.students_by_course:
-            print("Student not found.")
-        return self.students_by_course
+        for student in self.students:
+            if student.course == course:
+                students_by_course.append(student)
+
+        return students_by_course
+
+    def find_by_level(self, level):
+        students_by_level = []
+
+        for student in self.students:
+            if student.level == level:
+                students_by_level.append(student)
+
+        return students_by_level
+
+    def get_matric_number(self, student_id):
+        for student in self.students:
+            if student.student_id == student_id:
+                return student.get_matric_number()
+
+        return None
+
+    def get_undergraduate_count(self):
+        return len(self.students)
+
+    def display_all_undergraduates(self):
+        for student in self.students:
+            student.display_information()
