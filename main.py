@@ -1,4 +1,6 @@
 from services.student_service import StudentService
+from services.undergraduate_service import UndergraduateService
+
 
 from models import (
     Student,
@@ -9,6 +11,7 @@ from models import (
 
 
 student_service = StudentService()
+undergraduate_service = UndergraduateService()
 
 
 student1 = Student(
@@ -66,11 +69,15 @@ under_graduate1 = UnderGraduateStudent(
 student_service.register_student(student1)
 student_service.register_student(student2)
 student_service.register_student(under_graduate1)
+undergraduate_service.register_undergraduate(under_graduate1)
 
 
 # Display all students
 print("\n=== ALL STUDENTS ===")
 student_service.display_all_students()
+
+print("\n=== UNDERGRADUATE STUDENTS ===")
+undergraduate_service.display_all_undergraduates()
 
 
 # Find a student
@@ -79,6 +86,16 @@ student = student_service.find_student("ST001")
 
 if student:
     student.display_information()
+else:
+    print("Student not found.")
+
+
+print("\n=== FIND UNDERGRADUATE ===")
+
+undergraduate = undergraduate_service.find_undergraduate("ST003")
+
+if undergraduate:
+    undergraduate.display_information()
 else:
     print("Student not found.")
 
