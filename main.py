@@ -109,6 +109,31 @@ student = student_service.find_student("ST001")
 if student:
     student.display_information()
 
+print("\n=== FIND BY COURSE ===")
+
+students = undergraduate_service.find_students_by_course("Computer science")
+
+for student in students:
+    student.display_information()
+
+
+print("\n=== FIND BY LEVEL ===")
+
+students = undergraduate_service.find_by_level("200L")
+
+for student in students:
+    student.display_information()
+
+
+print("\n=== MATRIC NUMBER ===")
+
+matric_number = undergraduate_service.get_matric_number("ST003")
+
+if matric_number:
+    print(f"Matric Number: {matric_number}")
+else:
+    print("Student not found.")
+
 
 # Student count
 print("\n=== STUDENT COUNT ===")
