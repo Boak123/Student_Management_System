@@ -1,9 +1,21 @@
+from utils.validators import validate_student_data
+
 class StudentService:
 
     def __init__(self):
         self.students = []
 
     def register_student(self, student):
+
+        if not validate_student_data(
+            student.name,
+            student.get_phone(),
+            student.student_id,
+            student.get_score()
+        ):
+             print("Invalid student data.")
+             return
+
         for existing_student in self.students:
             if existing_student.student_id == student.student_id:
                 print("Student already exists.")
@@ -28,15 +40,13 @@ class StudentService:
         return None
 
     def find_students_by_course(self, course):
-        found = False
+        students_by_course = []
 
         for student in self.students:
             if student.course == course:
                 student.display_information()
-                found = True
 
-        if not found:
-            print("Student not found.")
+        return students_by_course
 
     def update_student_score(self, student_id, score):
         student = self.find_student(student_id)
