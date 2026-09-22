@@ -1,6 +1,5 @@
 from services.student_service import StudentService
 from services.undergraduate_service import UndergraduateService
-from utils.validators import validate_score
 
 
 from models import (
