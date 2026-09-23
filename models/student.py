@@ -1,4 +1,7 @@
 from .person import Person
+from utils.validators import validate_score
+from utils.validators import has_passed
+
 
 class Student(Person):
 
@@ -9,10 +12,7 @@ class Student(Person):
         self.course = course
         self.level = level
         self.__score = 0
-        if 0 <= score <= 100:
-            self.set_score(score)
-        else:
-            print("invalid Score")
+        self.set_score(score)
 
     def study(self):
         print("I am Studying")
@@ -24,10 +24,10 @@ class Student(Person):
         print("I have registered my courses.")
 
     def set_score(self, score):
-        if 0 <= score <= 100:
+        if validate_score(score):
             self.__score = score
         else:
-            print("invalid Score")
+            print("Invalid score")
 
     def get_score(self):
         return self.__score
@@ -39,7 +39,7 @@ class Student(Person):
             return "B"
         elif self.__score >= 50:
             return "C"
-        elif self.__score >= 40:
+        elif has_passed(self.__score):
             return "D"
         elif self.__score >= 0:
             return "F"
