@@ -1,0 +1,4 @@
+from config.settings import APP_NAME, UNIVERSITY_NAME, CURRENT_SESSION, DEFAULT_LEVEL
+
+def display_app_info():
+    return APP_NAME, UNIVERSITY_NAME, CURRENT_SESSION, DEFAULT_LEVEL
