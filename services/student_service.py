@@ -1,4 +1,5 @@
 from utils.validators import validate_student_data
+from config.settings import MAX_STUDENTS
 
 class StudentService:
 
@@ -20,7 +21,10 @@ class StudentService:
             if existing_student.student_id == student.student_id:
                 print("Student already exists.")
                 return
-
+        if len(self.students) >= MAX_STUDENTS:
+            print("Maximum capacity full")
+            return
+        
         self.students.append(student)
         print(f"{student.name} has been registered.")
 
@@ -44,7 +48,7 @@ class StudentService:
 
         for student in self.students:
             if student.course == course:
-                student.display_information()
+                students_by_course.append(student)
 
         return students_by_course
 
