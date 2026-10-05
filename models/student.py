@@ -27,7 +27,14 @@ class Student(Person):
         if validate_score(score):
             self.__score = score
         else:
-            print("Invalid score")
+            raise ValueError("Score must be between 0 and 100.")
+
+    def valid_score(self, score):
+        try:
+            if validate_score(score):
+                self.__score = score
+        except ValueError:
+            print("ValueError: Score must be between 0 and 100.")
 
     def get_score(self):
         return self.__score
