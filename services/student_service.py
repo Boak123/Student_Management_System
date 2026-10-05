@@ -1,5 +1,6 @@
 from utils.validators import validate_student_data
 from config.settings import MAX_STUDENTS
+from exceptions.student_exceptions import StudentNotFoundError
 
 class StudentService:
 
@@ -41,7 +42,7 @@ class StudentService:
             if student.student_id == student_id:
                 return student
 
-        return None
+        raise StudentNotFoundError(f"Student with ID {student_id} not found.")
 
     def find_students_by_course(self, course):
         students_by_course = []
