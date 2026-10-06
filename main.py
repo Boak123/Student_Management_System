@@ -1,6 +1,16 @@
 from services.student_service import StudentService
 from services.undergraduate_service import UndergraduateService
+from config.settings import APP_NAME, UNIVERSITY_NAME, CURRENT_SESSION, DEFAULT_LEVEL
+from utils.formatters import display_app_info
+from utils.validators import has_passed
 
+from config.settings import (
+    APP_NAME,
+    PASSING_SCORE,
+    MAX_STUDENTS,
+    DEBUG,
+    SECRET_KEY
+)
 
 from models import (
     Student,
@@ -10,8 +20,17 @@ from models import (
 )
 
 
+
 student_service = StudentService()
 undergraduate_service = UndergraduateService()
+info = display_app_info()
+
+print("Application:", APP_NAME)
+print("Passing Score:", PASSING_SCORE)
+print("Maximum Students:", MAX_STUDENTS)
+print("Debug Mode:", DEBUG)
+print("Secret Key:", SECRET_KEY)
+print(info)
 
 
 student1 = Student(
@@ -73,7 +92,7 @@ undergraduate_service.register_undergraduate(under_graduate1)
 
 
 # Display all students
-print("\n=== ALL STUDENTS ===")
+print(f"=== {APP_NAME} ===")
 student_service.display_all_students()
 
 print("\n=== UNDERGRADUATE STUDENTS ===")
@@ -159,3 +178,7 @@ for person in people:
     person.display_information()
     person.perform_role()
     print("----------------")
+
+print(has_passed(50))
+print(has_passed(40))
+print(has_passed(30))
