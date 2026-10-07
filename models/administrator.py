@@ -1,4 +1,5 @@
 from .person import Person
+#Administrator
 
 class Administrator(Person):
     def __init__(self, name, address, phone, admin_id, department, role):
