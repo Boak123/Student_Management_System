@@ -3,6 +3,7 @@ from services.undergraduate_service import UndergraduateService
 from config.settings import APP_NAME, UNIVERSITY_NAME, CURRENT_SESSION, DEFAULT_LEVEL
 from utils.formatters import display_app_info
 from utils.validators import has_passed
+from exceptions.student_exceptions import StudentNotFoundError
 
 from config.settings import (
     APP_NAME,
@@ -186,4 +187,10 @@ print(has_passed(30))
 try:
     student.set_score(150)
 except ValueError as error:
+    print(f"Error: {error}")
+
+try:
+    student = student_service.find_student("ST999")
+    student.display_information()
+except StudentNotFoundError as error:
     print(f"Error: {error}")
