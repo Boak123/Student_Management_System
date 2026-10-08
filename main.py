@@ -182,3 +182,8 @@ for person in people:
 print(has_passed(50))
 print(has_passed(40))
 print(has_passed(30))
+
+try:
+    student.set_score(150)
+except ValueError as error:
+    print(f"Error: {error}")
