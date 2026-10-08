@@ -194,3 +194,11 @@ try:
     student.display_information()
 except StudentNotFoundError as error:
     print(f"Error: {error}")
+
+
+try:
+    student_service.update_student_score("ST999", 150)
+except StudentNotFoundError as error:
+    print(error)
+except ValueError as error:
+    print(error)
