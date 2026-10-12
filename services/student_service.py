@@ -1,6 +1,7 @@
 from utils.validators import validate_student_data
 from config.settings import MAX_STUDENTS
 from exceptions.student_exceptions import StudentNotFoundError
+from models.student import student
 
 class StudentService:
 
@@ -37,7 +38,7 @@ class StudentService:
 
         print("Student not found.")
 
-    def find_student(self, student_id):
+    def find_student(self, student_id: str) -> student:
         for student in self.students:
             if student.student_id == student_id:
                 return student
@@ -74,7 +75,7 @@ class StudentService:
 
         return total_score / len(self.students)
 
-    def get_student_count(self):
+    def get_student_count(self) -> int:
         return len(self.students)
 
     def display_student(self, student):
