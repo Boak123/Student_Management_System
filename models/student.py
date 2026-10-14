@@ -23,7 +23,7 @@ class Student(Person):
     def register(self):
         print("I have registered my courses.")
 
-    def set_score(self, score):
+    def set_score(self, score: int) -> None:
         if validate_score(score):
             self.__score = score
         else:
@@ -36,7 +36,7 @@ class Student(Person):
         except ValueError:
             print("ValueError: Score must be between 0 and 100.")
 
-    def get_score(self):
+    def get_score(self) -> int:
         return self.__score
 
     def calculate_grade(self):
