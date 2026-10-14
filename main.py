@@ -102,7 +102,7 @@ undergraduate_service.display_all_undergraduates()
 
 # Find a student
 print("\n=== FIND STUDENT ===")
-student = student_service.find_student("ST001")
+student = student_service.find_student_by_id("ST001")
 
 if student:
     student.display_information()
@@ -124,7 +124,7 @@ else:
 print("\n=== UPDATE SCORE ===")
 student_service.update_student_score("ST001", 85)
 
-student = student_service.find_student("ST001")
+student = student_service.find_student_by_id("ST001")
 
 if student:
     student.display_information()
@@ -190,7 +190,7 @@ except ValueError as error:
     print(f"Error: {error}")
 
 try:
-    student = student_service.find_student("ST999")
+    student = student_service.find_student_by_id("ST999")
     student.display_information()
 except StudentNotFoundError as error:
     print(f"Error: {error}")
