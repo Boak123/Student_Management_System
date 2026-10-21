@@ -1,7 +1,7 @@
 from .person import Person
 
 class Lecturer(Person):
-
+#
     def __init__(self, name, address, phone, staff_id, department, salary):
         super().__init__(name, address, phone)
 
