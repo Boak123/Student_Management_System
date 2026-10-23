@@ -2,13 +2,15 @@ from utils.validators import validate_student_data
 from config.settings import MAX_STUDENTS
 from exceptions.student_exceptions import StudentNotFoundError
 from models.student import Student
+from models.registration_result import RegistrationResult
 
 class StudentService:
 
     def __init__(self):
         self.students = []
 
-    def register_student(self, student: Student) -> None:
+    
+    def register_student(self, student: Student) -> RegistrationResult:
 
         if not validate_student_data(
             student.name,
@@ -16,19 +18,33 @@ class StudentService:
             student.student_id,
             student.get_score()
         ):
-             print("Invalid student data.")
-             return
+            return RegistrationResult(
+                False,
+                "Invalid student data."
+            )
 
         for existing_student in self.students:
             if existing_student.student_id == student.student_id:
-                print("Student already exists.")
-                return
+                return RegistrationResult(
+                    False,
+                    "Student already exists.",
+                    student.student_id
+                )
+
         if len(self.students) >= MAX_STUDENTS:
-            print("Maximum capacity full")
-            return
-        
+            return RegistrationResult(
+                False,
+                "Maximum capacity reached."
+            )
+
         self.students.append(student)
-        print(f"{student.name} has been registered.")
+
+        return RegistrationResult(
+            True,
+            f"{student.name} has been registered.",
+            student.student_id
+        )
+
 
     def remove_student(self, student_id: str) -> None:
         for student in self.students:
