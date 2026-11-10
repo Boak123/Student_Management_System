@@ -1,0 +1,4 @@
+2026-10-27 23:22:55,481 - student_management - WARNING - Invalid student data supplied.
+2026-10-27 23:22:55,482 - student_management - WARNING - Duplicate registration attempted.
+2026-10-27 23:22:55,483 - student_management - WARNING - Maximum student capacity reached.
+2026-10-27 23:22:55,483 - student_management - INFO - Student registered successfully.
