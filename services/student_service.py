@@ -4,6 +4,7 @@ from exceptions.student_exceptions import StudentNotFoundError
 from models.student import Student
 from models.registration_result import RegistrationResult
 from utils.logger import logger
+import logging
 
 class StudentService:
 
